@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="zh-CN" data-dashboard-baseline="ifood-fy26">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>talabat 2026Q1 财报看板</title>
+  <style>
+    :root{--bg:#f6efe7;--surface:#fffdf8;--surface-soft:#fbf4ea;--card:#fffcf7;--card-alt:#f8efe5;--ink:#171412;--muted:#5c5148;--muted-light:#8b7e73;--line:#e7d7c8;--line-strong:#d8b996;--orange:#f05a24;--orange-dark:#c9340a;--orange-soft:#fff0e3;--green:#00966b;--green-soft:#dff5ec;--blue:#2f7890;--purple:#9b4fb3;--dark-card:#171412;--shadow:0 18px 45px rgba(70,45,20,.08)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;min-width:320px;color:var(--ink);background:radial-gradient(circle at 92% 0%,rgba(240,90,36,.14),transparent 30rem),linear-gradient(135deg,#fffdf8 0%,#f7f1e9 52%,#eef8f4 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}a{color:inherit;text-decoration:none}nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:66px;padding:12px max(24px,calc(50vw - 620px));border-bottom:1px solid var(--line);background:rgba(255,253,248,.92);backdrop-filter:blur(14px)}.brand{display:flex;align-items:center;gap:10px;font-weight:900;white-space:nowrap}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;color:#fff;background:var(--orange);box-shadow:0 10px 22px rgba(240,90,36,.22)}.nav-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px}.nav-links a{color:var(--muted);border-radius:10px;padding:9px 10px;font-size:13px;font-weight:800}.nav-links a:hover{color:var(--orange-dark);background:var(--orange-soft)}
+    main,footer{width:min(1240px,calc(100% - 48px));margin:auto}.hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(320px,.82fr);align-items:stretch;margin-top:18px;overflow:hidden;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,var(--surface) 0%,var(--card) 56%,var(--surface-soft) 100%);box-shadow:var(--shadow)}.hero-main{display:flex;flex-direction:column;justify-content:center;padding:50px 48px 42px}.eyebrow,.data-label{color:var(--orange-dark);letter-spacing:.08em;text-transform:uppercase;font-size:12px;font-weight:900}h1{margin:14px 0 16px;font-size:clamp(38px,3.4vw,52px);line-height:1.05}h2{margin:8px 0;font-size:clamp(32px,4vw,48px);line-height:1.15}h3{margin:8px 0 14px;font-size:21px;line-height:1.35}p,li{color:var(--muted);line-height:1.72}.hero ul{display:grid;gap:10px;max-width:780px;margin:22px 0 0;padding-left:22px;font-size:16px}.hero-side{display:flex;flex-direction:column;justify-content:space-between;gap:26px;padding:42px;color:var(--surface);background:linear-gradient(160deg,var(--dark-card) 0%,#2e211b 58%,#743518 100%)}.hero-side small{color:#ffd5c0;font-weight:800}.hero-side h2{margin:10px 0 8px;font-size:27px}.hero-side p{color:rgba(255,253,248,.74);margin:0;font-size:15px}.hero-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.hero-metrics div{min-height:96px;border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:14px;background:rgba(255,255,255,.08)}.hero-metrics strong{display:block;font-size:24px}.hero-metrics span{color:#f3d5c7;font-size:12px;line-height:1.45}
+    section{padding-top:68px}.section-title{max-width:1120px;margin-bottom:24px}.section-title p{margin:0}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.chart-card,.analysis,.terms article,.source-card{min-width:0;border:1px solid rgba(216,185,150,.55);border-radius:22px;box-shadow:var(--shadow)}.chart-card,.terms article,.source-card{padding:22px;background:var(--surface)}.chart-card{border-radius:24px}.chart{display:block;width:100%;height:352px}.chart-tall{height:448px}.legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:8px;color:var(--muted);font-size:12px;font-weight:800}.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}.source-note{margin:12px 0 0;color:var(--muted);font-size:11px;line-height:1.6}.chart-tooltip{position:fixed;z-index:50;display:none;max-width:min(340px,calc(100vw - 28px));border:1px solid var(--line);border-radius:14px;padding:10px 12px;color:var(--ink);background:rgba(255,253,248,.97);box-shadow:0 14px 35px rgba(70,45,20,.12);font-size:12px;line-height:1.55;white-space:pre-line;pointer-events:none}
+    .analysis{padding:22px;color:var(--surface);border-color:rgba(216,185,150,.55);background:#2b241f}.analysis .data-label{color:#ffc1a3}.analysis h3{font-size:24px}.analysis-list{display:grid;gap:18px;margin-top:18px}.analysis-item{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;align-items:start;border-left:3px solid rgba(255,253,248,.32);padding:2px 18px 4px 20px}.analysis-item b{grid-column:1;grid-row:1;display:block;color:#fff;font-size:17px;line-height:1.45}.analysis-item p{grid-column:1/-1;margin:10px 0 0;color:#e6d9cf;font-size:14px;overflow-wrap:break-word}.view-label{display:inline-flex;grid-column:2;grid-row:1;align-items:center;border-radius:999px;padding:6px 10px;color:#ffd7c4;background:rgba(240,90,36,.18);font-size:11px;font-weight:900}.forecast-notes{display:grid;gap:9px;margin-top:14px}.forecast-note{margin:0;border-left:3px solid var(--orange);border-radius:10px;padding:10px 11px;background:rgba(240,90,36,.08);color:var(--muted);font-size:12px;line-height:1.62}.forecast-note b{color:var(--ink)}
+    .terms{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.terms article{border-top:4px solid var(--orange)}.terms article b{font-size:16px;color:var(--orange-dark)}.terms article p{margin:8px 0 0;font-size:13px}.source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.source-card{display:grid;gap:9px}.source-type{width:max-content;border-radius:999px;padding:5px 9px;color:var(--orange-dark);background:var(--orange-soft);font-size:11px;font-weight:900}.source-card b{font-size:17px}.source-card p{margin:0;font-size:13px}.source-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}.source-links a{border:1px solid var(--line-strong);border-radius:10px;padding:8px 10px;color:var(--orange-dark);background:var(--surface-soft);font-size:12px;font-weight:800}.source-links a:hover{background:var(--orange-soft)}footer{display:flex;justify-content:space-between;gap:12px;margin-top:56px;padding:24px 0 38px;color:var(--muted-light);font-size:12px;border-top:1px solid var(--line)}
+    @media(max-width:860px){main,footer{width:min(100% - 28px,680px)}nav{padding:10px 14px}.nav-links a{padding:7px;font-size:12px}.hero,.grid-2,.terms,.source-grid{grid-template-columns:1fr}.hero-main,.hero-side{padding:30px 24px}.chart{height:300px}.chart-tall{height:420px}section{padding-top:48px}}@media(max-width:520px){.brand{font-size:13px}.nav-links{gap:0}.nav-links a{font-size:11px}.hero-metrics{grid-template-columns:1fr 1fr}.chart{height:270px}.chart-tall{height:390px}}
+    /* Layout safety: chart content must stay inside its card and insight labels share the title row. */
+    .hero-main h1{margin-bottom:10px}.hero-main>h3{margin:0}
+    .chart-card{overflow:hidden}.chart{max-width:100%;vertical-align:top}.chart-tall{height:420px}
+    .analysis-item{grid-template-columns:minmax(0,1fr) max-content;column-gap:14px;padding:0 18px 0 20px}
+    .analysis-item b{grid-column:1;grid-row:1;margin:0;align-self:start}
+    .analysis-item p{grid-column:1/-1;grid-row:2;margin:8px 0 0}
+    .view-label{grid-column:2;grid-row:1;align-self:start;margin:0;white-space:nowrap}
+    @media(max-width:860px){.chart{height:300px}.chart-tall{height:380px}}
+    @media(max-width:520px){.chart{height:270px}.chart-tall{height:350px}.analysis-item{grid-template-columns:minmax(0,1fr) max-content;column-gap:8px;padding-left:14px;padding-right:10px}.analysis-item b{font-size:15px}.view-label{font-size:10px;padding:5px 8px}}
+    .forecast-notes{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}.forecast-note{border-left-width:3px;border-radius:14px;padding:14px 18px;background:var(--orange-soft);color:#6f4732;font-size:12px;line-height:1.6}.forecast-note:nth-child(2){border-left-color:var(--blue);background:#edf6f8;color:#31545d}.forecast-note b{display:block;margin-bottom:4px;color:#6f4732;font-size:14px;line-height:1.35}.forecast-note:nth-child(2) b{color:#31545d}.chart-tall{height:352px}
+    @media(max-width:860px){.forecast-notes{grid-template-columns:1fr}.chart-tall{height:300px}}
+    @media(max-width:520px){.chart-tall{height:270px}}
+  </style>
+</head>
+<body>
+  <nav>
+<a class="brand" href="#top">
+<span class="brand-mark">t</span>
+<span>talabat 财报看板</span>
+</a>
+<div class="nav-links">
+<a href="#topline">Topline</a>
+<a href="#bottomline">Bottomline</a>
+<a href="#ops">运营侧</a>
+<a href="#sources">来源</a>
+</div>
+</nav>
+  <main id="top">
+    <section class="hero">
+<div class="hero-main">
+<span class="eyebrow">2026Q1 · talabat / 中东及北非本地生活</span>
+<h1>talabat 财报看板</h1>
+<h3>交易规模增长强劲，但全年增长与利润目标仍受投入周期约束。</h3>
+<ul>
+<li>
+<b>Topline：</b>GMV 为 26.85 亿美元、收入为 10.48 亿美元；较可比 25Q1 分别增长 19% 与 23%。</li>
+<li>
+<b>Bottomline：</b>调整后 EBITDA 为 1.30 亿美元、占 GMV 4.8%，低于可比 25Q1 的 6.3%；Food 竞争力与 Everyday App 投入压低比例。</li>
+<li>
+<b>运营侧：</b>活跃合作伙伴 9.3 万、骑手 16.8 万，分别同比增长 18% 与 25%；多垂类客户 GMV 占比升至 76%。</li>
+</ul>
+</div>
+<aside class="hero-side">
+<div>
+<small>券商观点 / 风险补充</small>
+<h2>一季度的节日时点拉高需求，全年指引仍未上调。</h2>
+<p>斋月结束后的开斋节（Eid al-Fitr）今年完整落在一季度，去年则跨一、二季度。管理层估计该日历错位为 Q1 GMV 增长贡献约 2–3 个百分点，Q2 将出现对应拖累。</p>
+</div>
+<div class="hero-metrics">
+<div>
+<strong>2,685</strong>
+<span>GMV，USD m</span>
+</div>
+<div>
+<strong>1,048</strong>
+<span>收入，USD m</span>
+</div>
+<div>
+<strong>130</strong>
+<span>调整后 EBITDA，USD m</span>
+</div>
+<div>
+<strong>4.8%</strong>
+<span>调整后 EBITDA / GMV</span>
+</div>
+</div>
+</aside>
+</section>
+
+    <section id="topline">
+<div class="section-title">
+<h2>Topline</h2>
+<p>增长快于全年指引节奏，但节日时点和短期需求助力将在 Q2 面临反向影响。</p>
+</div>
+<div class="grid-2">
+<article class="chart-card">
+<span class="data-label">财务数据</span>
+<h3>GMV、收入（26Q1 柱内展示地域构成）</h3>
+<svg id="toplineChart" class="chart chart-tall" data-chart="topline-quarterly-and-regional" role="img" aria-label="2025Q1至2026Q1的GMV和收入；2026Q1的GMV及收入柱按地域堆叠展示">
+</svg>
+<div class="legend">
+<span>
+<i style="background:var(--green)">
+</i>GMV / 26Q1 GCC</span>
+<span>
+<i style="background:var(--blue)">
+</i>收入 / 26Q1 GCC</span>
+<span>
+<i style="background:var(--purple)">
+</i>26Q1 收入：非 GCC</span>
+<span>
+<i style="background:#f2a14b">
+</i>26Q1 收入：Egypt</span>
+<span>
+<i style="background:#8ed8c2">
+</i>26Q1 GMV：非 GCC</span>
+</div>
+<p class="source-note">来源：公司 2026Q1 业绩新闻稿、业绩演示及历史业绩演示；26Q1 地域构成来自审阅财务报表。</p>
+<div class="forecast-notes">
+<p class="forecast-note">
+<b>公司指引</b>
+FY2026 GMV 为 112–115 亿美元、收入为 44–45 亿美元；恒定汇率增长分别为 11%–14% 与 14%–17%。</p>
+<p class="forecast-note">
+<b>券商预测</b>
+Citi FY2026E 销售额为 44.69 亿美元；Goldman Sachs FY2026E 收入为 42.67 亿美元。</p>
+</div>
+</article>
+<article class="analysis">
+<span class="data-label">驱动因素与核心洞察</span>
+<h3>GMV 增长较快，收入增长主要由 tMart 和广告带动</h3>
+<div class="analysis-list">
+<div class="analysis-item">
+<span class="view-label">公司披露</span>
+<b>GMV 增至 26.85 亿美元，新增用户和短期需求共同拉动</b>
+<p>较可比 25Q1，GMV 增长 19%；新增用户带动订单量增长。斋月结束后的开斋节今年完整落在一季度，叠加冲突期间居家消费，提供了短期支持。</p>
+</div>
+<div class="analysis-item">
+<span class="view-label">公司披露</span>
+<b>收入增速快于 GMV，主要由 tMart 和广告带动</b>
+<p>收入为 10.48 亿美元、较可比 25Q1 增长 23%。公司披露，收入/GMV 由 38.0% 升至 39.0%；主要由 tMart 自营杂货收入占比提高和广告变现带动。Grocery &amp; Retail 占比提高（该业务佣金率较低）、talabat pro 渗透提高和客户激励增加，部分抵消了这项改善。</p>
+</div>
+<div class="analysis-item">
+<span class="view-label">公司披露</span>
+<b>开斋节从去年跨季变为今年集中在 Q1，Q2 将承接反向日历影响</b>
+<p>管理层估计斋月/开斋节时点为 Q1 GMV 增长贡献约 2–3 个百分点；该节日旺季在 2025 年分布于一、二季度，因此公司维持全年 GMV 指引不变。</p>
+</div>
+<div class="analysis-item">
+<span class="view-label">券商观点</span>
+<b>26Q1 GMV 为 26.85 亿美元，高于业绩发布前市场估计</b>
+<p>业绩发布前市场汇编为 25.47 亿美元；Citi 将差额主要归因于节日时点和短期居家消费，并认为剔除这些因素后 GCC 增速可能回到高个位数。</p>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+    <section id="bottomline">
+<div class="section-title">
+<h2>Bottomline</h2>
+<p>投入压低调整后 EBITDA/GMV；一季度的较强需求尚未反映全年完整的竞争与生态建设支出。</p>
+</div>
+<div class="grid-2">
+<article class="chart-card">
+<span class="data-label">财务数据</span>
+<h3>调整后 EBITDA、经营利润与调整后 EBITDA/GMV</h3>
+<svg id="bottomlineChart" class="chart" data-chart="bottomline-quarterly" role="img" aria-label="2025Q1至2026Q1的调整后EBITDA、经营利润及调整后EBITDA占GMV比例图">
+</svg>
+<div class="legend">
+<span>
+<i style="background:var(--green)">
+</i>调整后 EBITDA</span>
+<span>
+<i style="background:var(--purple)">
+</i>经营利润</span>
+<span>
+<i style="background:var(--orange)">
+</i>调整后 EBITDA / GMV（右轴）</span>
+</div>
+<p class="source-note">来源：公司 2026Q1 业绩新闻稿、业绩演示、审阅财务报表及历史业绩演示。</p>
+<div class="forecast-notes">
+<p class="forecast-note">
+<b>公司指引</b>
+FY2026 调整后 EBITDA 为 5.10–5.40 亿美元，对 GMV 比例为 4.4%–4.8%。</p>
+<p class="forecast-note">
+<b>业绩发布前市场预期</b>
+2026Q1 调整后 EBITDA 为 1.18 亿美元、对 GMV 比例为 4.6%；实际结果为 1.30 亿美元和 4.8%。</p>
+</div>
+</article>
+<article class="analysis">
+<span class="data-label">驱动因素与核心洞察</span>
+<h3>利润率投入尚未完全按全年预算节奏展开</h3>
+<div class="analysis-list">
+<div class="analysis-item">
+<span class="view-label">公司披露</span>
+<b>调整后 EBITDA 为 1.30 亿美元，比例降至 4.8%</b>
+<p>较可比 25Q1，调整后 EBITDA 由 1.43 亿美元降至 1.30 亿美元、占 GMV 比例由 6.3% 降至 4.8%；Food 竞争力、Everyday App、Grocery &amp; Retail 组合变化和客户激励增加共同压低比例。</p>
+</div>
+<div class="analysis-item">
+<span class="view-label">公司披露</span>
+<b>Food 竞争力投入意在守住外卖领导地位，代价是短期利润率</b>
+<p>公司把全年约 5,500 万美元用于强化 Food 的价值主张、供给选择和 Everyday App 生态；Goldman Sachs 记录管理层称，Q1 其中约 1,000 万美元用于维持 Food 配送的竞争地位。</p>
+</div>
+<div class="analysis-item">
+<span class="view-label">公司披露</span>
+<b>2026 年 Everyday App 投入计划：加密 tMart 网络并改善配送和零售服务</b>
+<p>公司 2026 年推出约 1.2 亿美元的 Everyday App 投入计划，其中约 7,500 万美元为经营投入、约 4,500 万美元为资本和租赁投入。资金用于加密 tMart 网络、提升配送速度和可靠性、扩展供应链、升级 talabat pro 权益和零售服务。</p>
+</div>
+<div class="analysis-item">
+<span class="view-label">券商观点</span>
+<b>实际 EBITDA 比业绩发布前市场预期多 1,200 万美元，但并未改变全年投入判断</b>
+<p>市场原预计 Q1 调整后 EBITDA 为 1.18 亿美元，实际为 1.30 亿美元。Citi 认为较强需求与一季度较温和竞争压低了营销和定价投入，因而不改变其对增长、利润率和投资周期的判断。</p>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+    <section id="ops">
+<div class="section-title">
+<h2>运营侧</h2>
+<p>供给网络继续扩张，多垂类与订阅用户的 GMV 贡献上升；订单量和季度活跃客户数本期未披露。</p>
+</div>
+<div class="grid-2">
+<article class="chart-card">
+<span class="data-label">运营数据</span>
+<h3>活跃合作伙伴与骑手网络</h3>
+<svg id="networkChart" class="chart" data-chart="operating-network" role="img" aria-label="2025Q1至2026Q1活跃合作伙伴及骑手趋势图">
+</svg>
+<div class="legend">
+<span>
+<i style="background:var(--green)">
+</i>活跃合作伙伴（千）</span>
+<span>
+<i style="background:var(--blue)">
+</i>活跃骑手（千）</span>
+</div>
+<p class="source-note">来源：公司 2026Q1 业绩演示及历史业绩演示。</p>
+</article>
+<article class="analysis">
+<span class="data-label">运营含义</span>
+<h3>供给网络扩张、多垂类使用提升，优惠投入和竞争仍需关注</h3>
+<div class="analysis-list">
+<div class="analysis-item">
+<span class="view-label">公司披露</span>
+<b>合作伙伴 9.3 万、骑手 16.8 万，供给网络继续扩张</b>
+<p>两项分别同比增长 18% 与 25%；公司表示，合作伙伴增长与本地商户入驻及 Grocery &amp; Retail 扩张有关，骑手网络扩张有助于提升配送质量和用户体验。</p>
+</div>
+<div class="analysis-item">
+<span class="view-label">公司披露</span>
+<b>多垂类客户 GMV 占比升至 76%，talabat pro 升至 49%</b>
+<p>多垂类客户占比较 2025Q1 提高 4 个百分点，talabat pro 订阅用户 GMV 占比较 32% 提升至 49%。公司表示，提升 talabat pro 权益和扩展零售服务，有助于提升用户留存。</p>
+</div>
+<div class="analysis-item">
+<span class="view-label">公司披露</span>
+<b>合作伙伴出资优惠增至 1.88 亿美元，消费者优惠增加会压低收入和利润</b>
+<p>合作伙伴出资优惠同比增长 33%。公司同时披露，面向消费者的优惠增加会部分抵消收入改善，并压低调整后 EBITDA。</p>
+</div>
+<div class="analysis-item">
+<span class="view-label">券商观点</span>
+<b>竞争与燃油成本是下一阶段的运营变量</b>
+<p>Goldman Sachs 记录，4 月后折扣增加；燃油价格上升主要在阿联酋且占总成本不足 10%，管理层可通过配送费、订阅定价、拼单和商户计划应对。</p>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+    <section id="terms">
+<div class="section-title">
+<h2>关键术语与口径</h2>
+<p>金额均为 USD million；以公司已披露口径展示，未披露数据不补齐。</p>
+</div>
+<div class="terms">
+<article>
+<b>统一可比口径</b>
+<p>25Q1 使用含完整 Instashop 的可比值；25Q2–Q4 为 talabat-only，收入为 Management Revenue。26Q1 为含 Instashop 的合并披露。</p>
+</article>
+<article>
+<b>GMV</b>
+<p>公司定义为客户通过平台购买商品和服务所支付的总额；包含增值税、配送及其他费用和补贴，不含订阅费、骑手小费及按服务配送费。</p>
+</article>
+<article>
+<b>Food 竞争力</b>
+<p>用于强化 Food 的价值主张与供给选择、维持配送竞争地位的投入。公司将 2026 年约 5,500 万美元列为 Food 领导力投入，短期会压低利润率。</p>
+</article>
+<article>
+<b>Everyday App</b>
+<p>公司 2026 年的多业务投入计划，重点是加密 tMart 网络、提升配送速度和可靠性、扩展供应链、升级 talabat pro 权益及零售服务，计划投入约 1.20 亿美元。</p>
+</article>
+</div>
+</section>
+
+    <section id="sources">
+<div class="section-title">
+<h2>来源</h2>
+<p>页面来源仅分为公司披露和券商研报；公司口径、预测与外部观点分别标注。</p>
+</div>
+<div class="source-grid">
+<article class="source-card">
+<span class="source-type">公司披露</span>
+<b>2026Q1 业绩材料与财务核对</b>
+<p>用于确认交易规模、收入、调整后 EBITDA、运营指标、全年指引、地域分部与管理层经营解释。</p>
+<div class="source-links">
+<a href="assets/sources/20260512_talabat-Q126-Results-Press-Release-En.pdf" target="_blank" rel="noreferrer">业绩新闻稿 ↗</a>
+<a href="assets/sources/20260512_talabat-Q1-2026-Results-Presentation.pdf" target="_blank" rel="noreferrer">业绩演示 ↗</a>
+<a href="assets/sources/20260514_talabat-Investor-Presentation.pdf" target="_blank" rel="noreferrer">投资者材料 ↗</a>
+<a href="assets/sources/20260512_talabat-Q126-Financial-Statements-En.pdf" target="_blank" rel="noreferrer">财务核对 ↗</a>
+</div>
+</article>
+<article class="source-card">
+<span class="source-type">券商研报</span>
+<b>券商研报、预测与风险</b>
+<p>用于补充季节性、竞争、运营变量和长期利润率的外部观点；不与公司披露或看板计算混写。</p>
+<div class="source-links">
+<a href="assets/sources/Talabat%20(TALABAT.DU)_%201Q26_%20GMV%20ahead%20at%20_18_YoY_%20yet%20growth%20guidance%20unchanged.pdf" target="_blank" rel="noreferrer">Citi 1Q26 ↗</a>
+<a href="assets/sources/Talabat%20Holding%20(TALABAT.DU)_%201Q26%20earnings%20conference%20call%20takeaways.pdf" target="_blank" rel="noreferrer">GS 电话会摘要 ↗</a>
+<a href="assets/sources/Talabat_%20Potential%20positive%20implications%20from%20Uber_s%20strategic%20interest%20in%20MENA%20food%20delivery.pdf" target="_blank" rel="noreferrer">J.P. Morgan ↗</a>
+</div>
+</article>
+</div>
+</section>
+  </main>
+  <footer>
+<span>talabat 2026Q1 · 管理层简报</span>
+<span>离线预览包 · 未执行外部发布</span>
+</footer>
+  <script>
+  (()=>{
+    'use strict';
+    const chartData={
+      topline:[{label:'25Q1',gmv:2257,revenue:853},{label:'25Q2',gmv:2439,revenue:982},{label:'25Q3',gmv:2422,revenue:1009},{label:'25Q4',gmv:2476,revenue:1039},{label:'26Q1',gmv:2685,revenue:1048}],
+      regional:[{label:'GMV',gcc:2122,egypt:null,nonGcc:563},{label:'收入',gcc:824.116,egypt:139.856,nonGcc:83.776}],
+      bottomline:[{label:'25Q1',ebitda:143,operatingProfit:122.130,ratio:6.3},{label:'25Q2',ebitda:166,operatingProfit:145.727,ratio:6.8},{label:'25Q3',ebitda:154,operatingProfit:132.408,ratio:6.4},{label:'25Q4',ebitda:156,operatingProfit:140.443,ratio:6.3},{label:'26Q1',ebitda:130,operatingProfit:106.076,ratio:4.8}],
+      network:[{label:'25Q1',partners:79,riders:134},{label:'25Q2',partners:77,riders:null},{label:'25Q3',partners:80,riders:162},{label:'25Q4',partners:84,riders:157},{label:'26Q1',partners:93,riders:168}]
+    };
+    const colors={green:'#00966b',blue:'#2f7890',orange:'#f05a24',purple:'#9b4fb3',orangeSoft:'#f2a14b',greenLight:'#8ed8c2',ink:'#5c5148'};
+    const escapeHtml=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const number=value=>Number(value).toLocaleString('en-US',{maximumFractionDigits:1});
+    const tooltipText=(period,label,value,unit)=>`${period}\n${label}: ${number(value)}${unit}`;
+    const targetAttrs=(period,label,value,unit,color)=>{const text=tooltipText(period,label,value,unit);
+return `tabindex="0" role="button" aria-label="${escapeHtml(text)}" data-tooltip="${escapeHtml(text)}" data-color="${color}"`;};
+    function initTooltip(){let box=document.getElementById('chartTooltip');
+if(box)return;box=document.createElement('div');box.id='chartTooltip';box.className='chart-tooltip';document.body.appendChild(box);
+const hide=()=>{box.style.display='none';};
+const show=(target,event)=>{const text=target.getAttribute('data-tooltip');
+if(!text)return;box.textContent=text;box.style.borderTop=`4px solid ${target.getAttribute('data-color')||colors.orange}`;box.style.display='block';
+const rect=box.getBoundingClientRect(),origin=target.getBoundingClientRect(),x=event&&Number.isFinite(event.clientX)?event.clientX+14:origin.left+8,y=event&&Number.isFinite(event.clientY)?event.clientY+14:origin.top+8;box.style.left=`${Math.max(14,Math.min(window.innerWidth-rect.width-14,x))}px`;box.style.top=`${Math.max(14,Math.min(window.innerHeight-rect.height-14,y))}px`;};document.addEventListener('pointerover',event=>{const target=event.target.closest?.('[data-tooltip]');
+if(target)show(target,event);});document.addEventListener('pointerout',event=>{if(event.target.closest?.('[data-tooltip]'))hide();});document.addEventListener('focusin',event=>{const target=event.target.closest?.('[data-tooltip]');
+if(target)show(target);});document.addEventListener('focusout',hide);}
+    function setup(id,right=58){const svg=document.getElementById(id);
+if(!svg)return null;
+const width=Math.max(300,Math.round(svg.clientWidth||560)),height=Math.max(250,Math.round(svg.clientHeight||352)),pad={top:24,right,bottom:64,left:52};svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.setAttribute('preserveAspectRatio','none');
+return{svg,width,height,pad,right};}
+    function grid(frame,max,bottom){let markup='';
+for(let index=0;index<5;index+=1){const value=max*index/4,y=bottom-(bottom-frame.pad.top)*index/4;markup+=`<line x1="${frame.pad.left}" y1="${y}" x2="${frame.width-frame.right}" y2="${y}" stroke="#eadfd4"/>
+<text x="${frame.pad.left-8}" y="${y+4}" text-anchor="end" font-size="11" fill="${colors.ink}">${number(value)}</text>`;}return markup;}
+    function rightAxis(frame,min,max,bottom){let markup='';
+for(let index=0;index<5;index+=1){const value=min+(max-min)*index/4,y=bottom-(bottom-frame.pad.top)*index/4;markup+=`<text x="${frame.width-frame.right+8}" y="${y+4}" font-size="11" fill="${colors.ink}">${number(value)}%</text>`;}return markup;}
+    function renderTopline(){const frame=setup('toplineChart');
+if(!frame)return;
+const mainBottom=frame.height-frame.pad.bottom,plotHeight=mainBottom-frame.pad.top,max=3000,inner=frame.width-frame.pad.left-frame.right,step=inner/chartData.topline.length,centers=chartData.topline.map((_,index)=>frame.pad.left+step*(index+.5));
+const y=value=>mainBottom-(value/max)*plotHeight;
+let bars='';chartData.topline.forEach((row,index)=>{const group=Math.min(58,step*.68),barWidth=(group-6)/2,start=centers[index]-group/2;[['gmv','GMV',colors.green],['revenue','收入',colors.blue]].forEach(([key,label,color],seriesIndex)=>{const value=row[key],top=y(value),x=start+seriesIndex*(barWidth+6);bars+=`<rect x="${x}" y="${top}" width="${barWidth}" height="${Math.max(1,mainBottom-top)}" rx="4" fill="${color}" ${targetAttrs(row.label,label,value,' USD m',color)}>
+<title>${escapeHtml(tooltipText(row.label,label,value,' USD m'))}</title>
+</rect>`;});
+});
+const divider=Math.round(frame.height*.70),stackTop=divider+30,stackBottom=frame.height-26,stackHeight=stackBottom-stackTop,stackMax=2800,regionCenters=[frame.pad.left+inner*.30,frame.pad.left+inner*.70],regionColors=[['gcc','GCC',colors.purple],['egypt','Egypt',colors.orangeSoft],['nonGcc','非 GCC',colors.greenLight]];
+let regions=`<line x1="${frame.pad.left}" y1="${divider}" x2="${frame.width-frame.right}" y2="${divider}" stroke="#e7d7c8"/>
+<text x="${frame.pad.left}" y="${divider+18}" font-size="12" font-weight="800" fill="${colors.ink}">2026Q1 地域结构（金额，USD m）</text>`;chartData.regional.forEach((row,index)=>{let acc=0;regionColors.forEach(([key,label,color])=>{const value=row[key];
+if(!Number.isFinite(value))return;
+const height=value/stackMax*stackHeight,top=stackBottom-(acc+value)/stackMax*stackHeight,x=regionCenters[index]-36;regions+=`<rect x="${x}" y="${top}" width="72" height="${Math.max(1,height)}" fill="${color}" ${targetAttrs(row.label,label,value,' USD m',color)}>
+<title>${escapeHtml(tooltipText(row.label,label,value,' USD m'))}</title>
+</rect>`;acc+=value;});regions+=`<text x="${regionCenters[index]}" y="${frame.height-8}" text-anchor="middle" font-size="11" fill="${colors.ink}">${row.label}</text>
+<text x="${regionCenters[index]}" y="${stackTop-5}" text-anchor="middle" font-size="10" fill="${colors.ink}">${number(acc)}</text>`;});
+const labels=chartData.topline.map((row,index)=>`<text x="${centers[index]}" y="${mainBottom+18}" text-anchor="middle" font-size="11" font-weight="800" fill="${colors.ink}">${row.label}</text>`).join('');
+const q1Index=chartData.topline.length-1,q1Group=Math.min(58,step*.68),q1Width=(q1Group-6)/2,q1Start=centers[q1Index]-q1Group/2;
+const regionalTooltipText=(totalLabel,totalValue,label,value)=>`${tooltipText('26Q1',totalLabel,totalValue,' USD m')}\n${label}: ${number(value)} USD m`;
+const regionalTargetAttrs=(totalLabel,totalValue,label,value,color)=>{const text=regionalTooltipText(totalLabel,totalValue,label,value);return `tabindex="0" role="button" aria-label="${escapeHtml(text)}" data-tooltip="${escapeHtml(text)}" data-color="${color}"`;};
+const stack=(x,width,segments,totalLabel,totalValue)=>{let running=0;return segments.map(([label,value,color])=>{const top=y(running+value),height=y(running)-top,text=regionalTooltipText(totalLabel,totalValue,label,value),r=regionalTargetAttrs(totalLabel,totalValue,label,value,color);running+=value;return `<rect x="${x}" y="${top}" width="${width}" height="${Math.max(1,height)}" rx="4" fill="${color}" ${r}><title>${escapeHtml(text)}</title></rect>`;}).join('');};
+const regionalBars=stack(q1Start,q1Width,[['GMV · GCC',2122,colors.green],['GMV · 非 GCC',563,colors.greenLight]],'总 GMV',chartData.topline[q1Index].gmv)+stack(q1Start+q1Width+6,q1Width,[['收入 · GCC',824.116,colors.blue],['收入 · Egypt',139.856,colors.orangeSoft],['收入 · 非 GCC',83.776,colors.purple]],'总收入',chartData.topline[q1Index].revenue);
+regions='';
+frame.svg.innerHTML=`<rect width="${frame.width}" height="${frame.height}" rx="14" fill="#fffdf8"/>${grid(frame,max,mainBottom)}<line x1="${frame.pad.left}" y1="${frame.pad.top}" x2="${frame.pad.left}" y2="${mainBottom}" stroke="#b8aaa0"/>
+<line x1="${frame.width-frame.right}" y1="${frame.pad.top}" x2="${frame.width-frame.right}" y2="${mainBottom}" stroke="#b8aaa0"/>${bars}${regionalBars}${labels}${regions}`;}
+    function renderCombo(id,data,bars,line){const frame=setup(id),bottom=frame&&frame.height-frame.pad.bottom;
+if(!frame)return;
+const values=data.flatMap(row=>bars.map(series=>row[series.key]).filter(Number.isFinite)),max=Math.ceil(Math.max(...values)/20)*20||20,ratioValues=data.map(row=>row[line.key]).filter(Number.isFinite),ratioMin=Math.floor(Math.min(...ratioValues)),ratioMax=Math.ceil(Math.max(...ratioValues));
+const y=value=>bottom-(value/max)*(bottom-frame.pad.top),ry=value=>bottom-((value-ratioMin)/(ratioMax-ratioMin||1))*(bottom-frame.pad.top),inner=frame.width-frame.pad.left-frame.right,step=inner/data.length,centers=data.map((_,index)=>frame.pad.left+step*(index+.5));
+let barMarkup='',pointMarkup='',path='';data.forEach((row,index)=>{const group=Math.min(60,step*.68),width=(group-6)/bars.length,start=centers[index]-group/2;bars.forEach((series,seriesIndex)=>{const value=row[series.key];
+if(!Number.isFinite(value))return;
+const top=y(value),x=start+seriesIndex*(width+6);barMarkup+=`<rect x="${x}" y="${top}" width="${width}" height="${Math.max(1,bottom-top)}" rx="4" fill="${series.color}" ${targetAttrs(row.label,series.name,value,' USD m',series.color)}>
+<title>${escapeHtml(tooltipText(row.label,series.name,value,' USD m'))}</title>
+</rect>`;});
+const pointX=centers[index],pointY=ry(row[line.key]);path+=`${index?'L':'M'} ${pointX} ${pointY} `;pointMarkup+=`<circle cx="${pointX}" cy="${pointY}" r="4.2" fill="#fffdf8" stroke="${line.color}" stroke-width="2.5" ${targetAttrs(row.label,line.name,row[line.key],'%',line.color)}>
+<title>${escapeHtml(tooltipText(row.label,line.name,row[line.key],'%'))}</title>
+</circle>`;});
+const labels=data.map((row,index)=>`<text x="${centers[index]}" y="${frame.height-18}" text-anchor="middle" font-size="11" fill="${colors.ink}">${row.label}</text>`).join('');frame.svg.innerHTML=`<rect width="${frame.width}" height="${frame.height}" rx="14" fill="#fffdf8"/>${grid(frame,max,bottom)}<line x1="${frame.pad.left}" y1="${frame.pad.top}" x2="${frame.pad.left}" y2="${bottom}" stroke="#b8aaa0"/>
+<line x1="${frame.width-frame.right}" y1="${frame.pad.top}" x2="${frame.width-frame.right}" y2="${bottom}" stroke="#b8aaa0"/>${rightAxis(frame,ratioMin,ratioMax,bottom)}${barMarkup}<path d="${path}" fill="none" stroke="${line.color}" stroke-width="3" stroke-linecap="round"/>${pointMarkup}${labels}`;}
+    function renderNetwork(){const frame=setup('networkChart',28),bottom=frame&&frame.height-frame.pad.bottom;
+if(!frame)return;
+const max=180,inner=frame.width-frame.pad.left-frame.right,step=inner/chartData.network.length,centers=chartData.network.map((_,index)=>frame.pad.left+step*(index+.5)),series=[['partners','活跃合作伙伴',colors.green],['riders','活跃骑手',colors.blue]];
+let bars='';chartData.network.forEach((row,index)=>{const group=Math.min(62,step*.68),width=(group-6)/2,start=centers[index]-group/2;series.forEach(([key,label,color],seriesIndex)=>{const value=row[key];
+if(!Number.isFinite(value))return;
+const top=bottom-(value/max)*(bottom-frame.pad.top),x=start+seriesIndex*(width+6);bars+=`<rect x="${x}" y="${top}" width="${width}" height="${Math.max(1,bottom-top)}" rx="4" fill="${color}" ${targetAttrs(row.label,label,value,' 千',color)}>
+<title>${escapeHtml(tooltipText(row.label,label,value,' 千'))}</title>
+</rect>`;});});
+const labels=chartData.network.map((row,index)=>`<text x="${centers[index]}" y="${frame.height-18}" text-anchor="middle" font-size="11" fill="${colors.ink}">${row.label}</text>`).join('');frame.svg.innerHTML=`<rect width="${frame.width}" height="${frame.height}" rx="14" fill="#fffdf8"/>${grid(frame,max,bottom)}<line x1="${frame.pad.left}" y1="${frame.pad.top}" x2="${frame.pad.left}" y2="${bottom}" stroke="#b8aaa0"/>
+<line x1="${frame.pad.left}" y1="${bottom}" x2="${frame.width-frame.right}" y2="${bottom}" stroke="#b8aaa0"/>${bars}${labels}`;}
+    function renderCharts(){renderTopline();renderCombo('bottomlineChart',chartData.bottomline,[{key:'ebitda',name:'调整后 EBITDA',color:colors.green},{key:'operatingProfit',name:'经营利润',color:colors.purple}],{key:'ratio',name:'调整后 EBITDA/GMV',color:colors.orange});renderNetwork();}
+    window.addEventListener('load',()=>{initTooltip();renderCharts();});
+window.addEventListener('resize',renderCharts);
+  })();
+  </script>
+<script>
+  (() => {
+    const cleanRevenueGmvIndicator = () => {
+      const svg = document.getElementById('toplineChart') || document.getElementById('toplineMain');
+      if (!svg) return;
+      svg.querySelectorAll('path, polyline, circle').forEach(node => node.remove());
+      const width = Number(svg.viewBox?.baseVal?.width) || svg.getBoundingClientRect().width || 620;
+      svg.querySelectorAll('line').forEach(line => {
+        const x1 = Number(line.getAttribute('x1'));
+        const x2 = Number(line.getAttribute('x2'));
+        if (Math.abs(x1 - x2) < 1 && x1 > width * 0.7) line.remove();
+      });
+      svg.querySelectorAll('text').forEach(text => {
+        const x = Number(text.getAttribute('x'));
+        if (x > width * 0.8 && !/[QHFY]/i.test(text.textContent || '')) text.remove();
+      });
+      const card = svg.closest('.chart-card, .company-financial-chart');
+      card?.querySelectorAll('.legend span, .chart-legend span').forEach(item => {
+        if (/收入\s*\/\s*GMV/.test(item.textContent || '')) item.remove();
+      });
+      card?.querySelectorAll('h3').forEach(title => {
+        title.textContent = title.textContent
+          .replace(/\s*(与|及)?\s*收入\s*\/\s*GMV(比例)?/g, '')
+          .replace(/\s*(与|及)\s*$/, '');
+      });
+      svg.setAttribute('aria-label', (svg.getAttribute('aria-label') || '')
+        .replace(/\s*(与|及)?\s*收入\s*\/\s*GMV(比例)?/g, '')
+        .replace(/\s*(与|及)\s*$/, ''));
+    };
+    window.addEventListener('load', cleanRevenueGmvIndicator);
+    window.addEventListener('resize', cleanRevenueGmvIndicator);
+  })();
+  </script>
+</body>
+</html>
